@@ -41,7 +41,8 @@ final class AiInteractionManifest
                 $plugin,
                 $pluginPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Migrations',
             ),
-            ManifestOps::manifestStarRepo($plugin, 'Crustum/AiInteraction'),
+
+            ManifestOps::manifestStarRepo($plugin, 'Crustum/ai-interaction'),
         );
     }
 }
