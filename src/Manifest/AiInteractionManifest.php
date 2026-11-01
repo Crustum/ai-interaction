@@ -5,6 +5,7 @@ namespace Crustum\AiInteraction\Manifest;
 
 use Crustum\AiInteraction\AiInteractionPlugin;
 use Crustum\PluginManifest\Manifest\ManifestOps;
+use Crustum\PluginManifest\Manifest\Tag;
 
 /**
  * Standalone manifest provider for the AiInteraction plugin.
@@ -28,6 +29,14 @@ final class AiInteractionManifest
         $plugin = ManifestOps::pluginName(AiInteractionPlugin::class);
 
         return array_merge(
+            ManifestOps::manifestDependencies($plugin, [
+                'Crustum/Ai' => [
+                    'required' => true,
+                    'tags' => [Tag::CONFIG, Tag::BOOTSTRAP, Tag::MIGRATIONS, Tag::DEPENDENCIES],
+                    'reason' => 'Required crustum/cakephp-ai',
+                ],
+            ]),
+
             ManifestOps::manifestMigrations(
                 $plugin,
                 $pluginPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Migrations',
